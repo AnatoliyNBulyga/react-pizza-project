@@ -11,7 +11,7 @@ export default function SortPopup({items}) {
         setActiveItem(index);
         setVisiblePopup(false);
     }
-    const activeLabel = items[activeItem];
+    const activeLabel = items[activeItem].name;
     useEffect(() => {
         const handleOutsideClick = (event) => {
             if ( !event.path.includes(sortRef.current) ) {
@@ -44,9 +44,9 @@ export default function SortPopup({items}) {
             {visiblePopup &&
                 <div className="sort__popup">
                     <ul>
-                        { items && items.map((el, index) => <li key={`${el}_${index}`}
+                        { items && items.map((el, index) => <li key={`${el.name}_${index}`}
                                                        onClick={() => onSelectActiveItem(index)}
-                                                       className={activeItem === index ? "active" : ""}>{el}</li>)
+                                                       className={activeItem === index ? "active" : ""}>{el.name}</li>)
                         }
                     </ul>
                 </div>
